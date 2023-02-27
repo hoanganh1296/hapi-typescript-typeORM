@@ -1,1 +1,1 @@
-export { AppDataSource } from "./conf";
+export { AppDataConnection, AppDataSource } from "./conf";
