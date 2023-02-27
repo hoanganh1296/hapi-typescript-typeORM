@@ -1,0 +1,53 @@
+{
+  "name": "hapi-typescript-typeorm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-node-dev": "ts-node-dev",
+    "lint:fix": "eslint src/*.ts --fix",
+    "lint": "eslint src/*.ts",
+    "postinstall": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint:fix",
+      "npm run lint",
+      "git add ."
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/colors": "^1.2.1",
+    "@types/hapi": "^18.0.8",
+    "@types/node": "^18.11.19",
+    "@types/node-emoji": "^1.8.2",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@hapi/hapi": "^21.2.1",
+    "colors": "^1.4.0",
+    "node-emoji": "^1.11.0",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^5.1.4",
+    "typeorm": "^0.3.11"
+  }
+}
