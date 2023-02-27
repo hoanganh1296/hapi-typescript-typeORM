@@ -1,6 +1,6 @@
 import * as Hapi from "@hapi/hapi";
 import { Server, ResponseToolkit, Request } from "@hapi/hapi";
-import { AppDataConnection } from "./db";
+import { AppDataConnection } from "../../db";
 import "colors";
 import { get } from "node-emoji";
 
