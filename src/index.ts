@@ -1,6 +1,6 @@
 import * as Hapi from "@hapi/hapi";
 import { Server, ResponseToolkit, Request } from "@hapi/hapi";
-import { AppDataSource } from "./db";
+import { AppDataConnection } from "./db";
 import "colors";
 import { get } from "node-emoji";
 
@@ -18,11 +18,7 @@ const init = async () => {
     },
   });
 
-  AppDataSource.initialize()
-    .then(() => {
-      console.log(get("dvd"), "DB init -> Done!", get("dvd"));
-    })
-    .catch((error) => console.log(error));
+  await AppDataConnection();
   await server.start().then();
   console.log(
     get("rocket"),
