@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "ts-node-dev": "ts-node-dev",
-    "dev": "nodemon --config nodemon.json src/app.ts",
+    "dev": "nodemon --config nodemon.json src/index.ts",
     "lint:fix": "eslint src/*.ts --fix",
     "lint": "eslint src/*.ts",
     "postinstall": "husky install"

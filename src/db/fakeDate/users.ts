@@ -2,7 +2,6 @@ import { faker } from "@faker-js/faker";
 import { Condition, Entity, Repository } from "typeorm";
 import { AppDataSource } from "../conf";
 import { UsersEntity, UserType } from "../entities";
-import "colors";
 import { get } from "node-emoji";
 
 export const fakerUsers = async (amount = 50) => {
