@@ -1,39 +1,26 @@
-import * as Hapi from "@hapi/hapi";
-import { Server, ResponseToolkit, Request } from "@hapi/hapi";
-import { AppDataConnection } from "./db";
-import "colors";
+import dotenv from "dotenv";
+dotenv.config()
+import {Server} from "@hapi/hapi"
 import { get } from "node-emoji";
-import config from "config";
+import initServer from "./server";
+import { AppDataConnection } from "./db";
 
-import routes from "./routes";
+let server:Server;
 
-const init = async () => {
-  const server: Server = Hapi.server({
-    port: config.get<number>("SERVER_PORT"),
-    host: config.get<string>("SERVER_HOST"),
-  });
-
-  server.route({
-    method: "GET",
-    path: "/",
-    handler: (request: Request, h: ResponseToolkit, err?: Error) => {
-      return { msg: "Hello World!" };
-    },
-  });
-
-  await AppDataConnection();
-  server.route(routes)
-  await server.start().then();
+async function bootstrap(){
+  await AppDataConnection()
+  server = await initServer()
   console.log(
     get("rocket"),
     `Server running on ${server.info.uri}`.green,
     get("rocket")
   );
-};
+  await server.start().then();
+}
 
 process.on("unhandledRejection", (err) => {
   console.error(err);
   process.exit();
 });
 
-init();
+bootstrap()
