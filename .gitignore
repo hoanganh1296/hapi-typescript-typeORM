@@ -4,3 +4,6 @@ node_modulesl/
 # API keys
 .env
 node_modules
+
+#database
+hapi.db

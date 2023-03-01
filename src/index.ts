@@ -3,11 +3,14 @@ import { Server, ResponseToolkit, Request } from "@hapi/hapi";
 import { AppDataConnection } from "./db";
 import "colors";
 import { get } from "node-emoji";
+import config from "config";
+
+import routes from "./routes";
 
 const init = async () => {
   const server: Server = Hapi.server({
-    port: 3000,
-    host: "localhost",
+    port: config.get<number>("SERVER_PORT"),
+    host: config.get<string>("SERVER_HOST"),
   });
 
   server.route({
@@ -19,6 +22,7 @@ const init = async () => {
   });
 
   await AppDataConnection();
+  server.route(routes)
   await server.start().then();
   console.log(
     get("rocket"),
