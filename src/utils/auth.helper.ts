@@ -1,8 +1,8 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
+import { hash } from "bcrypt";
 import { Repository } from "typeorm";
-import { UsersEntity } from "../db/entities/users.entity";
-import { compare, hash, genSalt } from "bcrypt";
 import { AppDataSource } from "../db";
+import { UsersEntity } from "../db/entities/users.entity";
 
 const userRepo: Repository<UsersEntity> =
   AppDataSource.getRepository(UsersEntity);
