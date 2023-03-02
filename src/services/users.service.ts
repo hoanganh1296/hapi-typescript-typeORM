@@ -9,7 +9,13 @@ const userRepo: Repository<UsersEntity> =
 
 export const getUsers = async () => {
   const users = await userRepo.find();
-  return users;
+  return {
+    users: users.map((u: UsersEntity) => {
+      delete u.salt;
+      delete u.password;
+      return u;
+    }),
+  };
 };
 
 export const getUser = async (id: number) => {

@@ -14,6 +14,9 @@ export const userRouter = [
     path: "/users",
     handler: getUsers,
     options: {
+      auth: {
+        strategy: "jwt",
+      },
       description: "Get Users",
       tags: ["api"],
       plugins: {
@@ -21,6 +24,7 @@ export const userRouter = [
           payloadType: "form",
           responses: {
             200: { description: "Success" },
+            401:{description: "Unauthorized"},
             404: { description: "Not Found" },
           },
         },
@@ -32,6 +36,9 @@ export const userRouter = [
     path: "/users/{id}",
     handler: getUser,
     options: {
+      auth:{
+        strategy:"jwt"
+      },
       validate: {
         params: Joi.object({
           id: Joi.number().required(),
@@ -44,6 +51,7 @@ export const userRouter = [
           payloadType: "form",
           responses: {
             200: { description: "Success" },
+            401:{description: "Unauthorized"},
             404: { description: "Not Found" },
           },
         },

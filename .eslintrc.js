@@ -4,10 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-  ],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   overrides: [],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -18,5 +15,6 @@ module.exports = {
   rules: {
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
+    // "@typescript-eslint/": "warn",
   },
 };

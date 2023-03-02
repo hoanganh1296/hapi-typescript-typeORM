@@ -10,6 +10,8 @@ export class UsersEntity extends SharedProp {
     firstName: string,
     lastName: string,
     email: string,
+    password: string,
+    salt: string,
     birthOfDate?: Date,
     type?: UserType
   ) {
@@ -17,6 +19,8 @@ export class UsersEntity extends SharedProp {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
+    this.password = password;
+    this.salt = salt;
     this.birthOfDate = birthOfDate;
     this.type = type;
   }
@@ -38,6 +42,12 @@ export class UsersEntity extends SharedProp {
 
   @Column({ default: "user" })
   type: UserType;
+
+  @Column({ nullable: false })
+  password: string;
+
+  @Column({ nullable: false })
+  salt: string;
 
   @OneToMany(() => PostsEntity, (post: PostsEntity) => post.user, {
     onDelete: "CASCADE",
